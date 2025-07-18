@@ -1,0 +1,478 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-1": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/INTI-JULY1-AM-09.webp",
+            "mobile_image": "shopify://shop_images/INTI-JULY1-AM-09_mobile.webp",
+            "content_max_width": 700,
+            "mobile_text_position": "place-self-start text-start",
+            "desktop_text_position": "sm:place-self-start sm:text-start",
+            "subheading": "Be the first to ride the sun - simple, smart, and yours",
+            "title": "We’ve Made Solar Dreams Real... Drive Free With INTI",
+            "heading_tag": "h2",
+            "heading_spacing": 16,
+            "content_max_width_2": 780,
+            "mobile_text_position_2": "place-self-end-start text-start",
+            "desktop_text_position_2": "sm:place-self-end-start sm:text-start",
+            "subheading_2": "Reserve Yours for $100",
+            "title_2": "$21,950",
+            "heading_tag_2": "h0",
+            "heading_spacing_2": 4,
+            "button_text": "Reserve Now",
+            "button_link": "shopify://products/inti-solar-electric-car",
+            "button_position": "primary",
+            "button_text_2": "",
+            "button_link_2": "",
+            "button_2_position": "secondary",
+            "text_color": "#ffffff",
+            "text_color_2": "#ffffff",
+            "button_background": "#0892d0",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 13,
+            "background": "#ffffff",
+            "background_gradient": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide-1"
+      ],
+      "settings": {
+        "full_width": false,
+        "allow_transparent_header": false,
+        "show_initial_transition": true,
+        "image_size": "auto",
+        "controls_type": "numbers",
+        "transition_type": "fade_with_text",
+        "autoplay": false,
+        "cycle_speed": 5,
+        "background": "#f2f2f2",
+        "background_gradient": "linear-gradient(60deg, rgba(60, 65, 68, 1), rgba(23, 29, 33, 1) 98%)"
+      }
+    },
+    "image_link_blocks_ADpLCb": {
+      "type": "image-link-blocks",
+      "blocks": {
+        "item_zqVfcm": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/INTI-JULY1-AM-12_mobile.webp",
+            "stretch_image": true,
+            "link_text": "Performance",
+            "heading_tag": "h2",
+            "body": "<h6>Feel the surge - INTI’s lightweight 880 lbs delivers standout acceleration - 0 to 25 mph - maintaining Low Speed Vehicle road requirements.</h6>",
+            "link_url": "",
+            "enable_hover_animation": false,
+            "hover_animation_desktop": true,
+            "hover_animation_mobile": false,
+            "hover_overlay_opacity": 60,
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 40
+          }
+        },
+        "item_rWWyJE": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Dock_render_2.webp",
+            "stretch_image": true,
+            "link_text": "Range",
+            "heading_tag": "div",
+            "body": "<h6>Zip to the town center or explore your neighborhood - INTI’s 35 free solar miles daily or 70-mile battery range keep you rolling.</h6>",
+            "link_url": "",
+            "enable_hover_animation": false,
+            "hover_animation_desktop": true,
+            "hover_animation_mobile": false,
+            "hover_overlay_opacity": 40,
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        },
+        "item_hamKDA": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/INTI_Demo_vehicle.webp",
+            "stretch_image": true,
+            "link_text": "Safety",
+            "heading_tag": "div",
+            "body": "<h6>With a full roll-cage, side-impact bars, 3-point seat belts, head restraint, and front and rear bumpers, the INTI’s got you covered.</h6>",
+            "link_url": "",
+            "enable_hover_animation": false,
+            "hover_animation_desktop": true,
+            "hover_animation_mobile": false,
+            "hover_overlay_opacity": 40,
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        },
+        "item_L8j7ch": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/Left_Rear_Quarter_High_Solar_2_1.webp",
+            "stretch_image": true,
+            "link_text": "Savings",
+            "heading_tag": "div",
+            "body": "<h6>INTI’s free solar power saves you $14,000 over time,* with low upkeep from its lightweight design.</h6>",
+            "link_url": "",
+            "enable_hover_animation": false,
+            "hover_animation_desktop": true,
+            "hover_animation_mobile": false,
+            "hover_overlay_opacity": 40,
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 30
+          }
+        },
+        "item_p9MzKf": {
+          "type": "item",
+          "settings": {
+            "image": "shopify://shop_images/inti-_socials-11.webp",
+            "stretch_image": true,
+            "link_text": "Sustainability",
+            "heading_tag": "div",
+            "body": "<h6>Harness the sun’s free energy - INTI’s solar roof powers a clean, guilt-free ride every day.</h6>",
+            "link_url": "",
+            "enable_hover_animation": false,
+            "hover_animation_desktop": true,
+            "hover_animation_mobile": false,
+            "hover_overlay_opacity": 40,
+            "background": "",
+            "text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 25
+          }
+        }
+      },
+      "block_order": [
+        "item_zqVfcm",
+        "item_rWWyJE",
+        "item_hamKDA",
+        "item_L8j7ch",
+        "item_p9MzKf"
+      ],
+      "name": "Image link blocks",
+      "settings": {
+        "full_width": false,
+        "block_size": "huge",
+        "image_ratio": "short",
+        "block_size_mobile": "huge",
+        "image_ratio_mobile": "tall",
+        "subheading": "",
+        "title": "",
+        "content": "",
+        "body": "",
+        "link_url": "",
+        "link_text": "",
+        "background": "",
+        "background_gradient": "",
+        "text_color": "",
+        "heading_color": "",
+        "heading_gradient": ""
+      }
+    },
+    "hot_spots_VnPVBx": {
+      "type": "hot-spots",
+      "blocks": {
+        "item_G4txUt": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 17,
+            "vertical_position": 71,
+            "horizontal_position_mobile": 16,
+            "vertical_position_mobile": 63,
+            "icon_width": 32,
+            "title": "Built to Shine, Built to Last",
+            "content": "<p>Ride with confidence - INTI’s sturdy chassis, safety features, and 5-year battery warranty deliver peace of mind, mile after mile.</p>"
+          }
+        },
+        "item_tn6VJ4": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 43,
+            "vertical_position": 14,
+            "horizontal_position_mobile": 62,
+            "vertical_position_mobile": 14,
+            "icon_width": 32,
+            "title": "Solar Freedom Unleashed",
+            "content": "<p>Power your day with 35 free miles from the sun and up to 70 miles on full solar charge - INTI’s innovative roof makes driving effortless and guilt-free with zero emissions.</p>"
+          }
+        },
+        "item_XCNmDc": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 44,
+            "vertical_position": 67,
+            "horizontal_position_mobile": 69,
+            "vertical_position_mobile": 64,
+            "icon_width": 32,
+            "title": "Savings That Roll",
+            "content": "<p>Cut fuel costs by $14,000 over time - INTI’s lightweight 880-lb design and solar power keep your wallet happy and driving free.</p>"
+          }
+        },
+        "item_aBxbDp": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 55,
+            "vertical_position": 39,
+            "horizontal_position_mobile": 14,
+            "vertical_position_mobile": 30,
+            "icon_width": 32,
+            "title": " Performance That Pops",
+            "content": "<p>Crafted over 11 years by 40+ UK and USA experts, INTI’s global ingenuity delivers a zippy 25 mph ride - fun, fast, and free.</p>"
+          }
+        },
+        "item_gRdanP": {
+          "type": "item",
+          "settings": {
+            "horizontal_position": 30,
+            "vertical_position": 30,
+            "horizontal_position_mobile": 45,
+            "vertical_position_mobile": 72,
+            "icon_width": 32,
+            "title": "Style That Stands Out",
+            "content": "<p>Turn heads with superyacht-inspired lines - INTI’s sleek design and customizable seats make every trip a statement of pride.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_G4txUt",
+        "item_tn6VJ4",
+        "item_XCNmDc",
+        "item_aBxbDp",
+        "item_gRdanP"
+      ],
+      "settings": {
+        "full_width": true,
+        "image": "shopify://shop_images/INTI_MIDDLE_BANNER_V2.webp",
+        "mobile_image": "shopify://shop_images/INTI_MIDDLE_BANNER.webp",
+        "title": "Discover the INTI Difference",
+        "content": "<p> Solar driving isn’t just a vision—it’s your next bold move. From zippy thrills to sun-powered savings, INTI redefines every ride. Click the hotspots on INTI below—uncover what sets this solar star apart and why you'll be the talk of the town.</p>",
+        "button_text": "Start Your Solar Adventure",
+        "button_url": "shopify://products/inti-solar-electric-car",
+        "desktop_text_position": "place-self-center-end text-end",
+        "image_background": "",
+        "image_background_gradient": "",
+        "overlay_color": "#000000",
+        "overlay_opacity": 0,
+        "overlay_text_color": "#ffffff",
+        "overlay_button_background": "#0892d0",
+        "overlay_button_text_color": "",
+        "hot_spot_dot_background": "#ffffff",
+        "hot_spot_dot_text_color": "#0892d0",
+        "hot_spot_content_background": "#ffffff",
+        "hot_spot_content_text_color": "#0892d0",
+        "hot_spot_content_opacity": 90,
+        "hot_spot_content_blur_radius": 3
+      }
+    },
+    "media_grid_QRhU7L": {
+      "type": "media-grid",
+      "blocks": {
+        "image_YTaNae": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/INTI_Update_Image_2.webp",
+            "title": "",
+            "heading_tag": "h4",
+            "link_url": "shopify://products/inti-solar-electric-car",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_znLFM4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/cfdvdfvdf-sized.webp",
+            "title": "",
+            "heading_tag": "h4",
+            "link_url": "shopify://products/inti-solar-electric-car",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 2,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        },
+        "image_yc8398": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/INTI_Middle_V2_9495a536-5cbc-4433-b37a-ddb842c2159e.webp",
+            "title": "",
+            "heading_tag": "h4",
+            "link_url": "shopify://products/inti-solar-electric-car",
+            "link_text": "",
+            "mobile_text_position": "place-self-center text-center",
+            "desktop_column_span": 2,
+            "desktop_row_span": 1,
+            "desktop_text_position": "sm:place-self-center sm:text-center",
+            "background": "#000000",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#000000",
+            "button_text_color": "#ffffff",
+            "overlay_color": "#000000",
+            "overlay_opacity": 0
+          }
+        }
+      },
+      "block_order": [
+        "image_YTaNae",
+        "image_znLFM4",
+        "image_yc8398"
+      ],
+      "settings": {
+        "full_width": false,
+        "reduce_width": true,
+        "desktop_row_height": 400,
+        "mobile_row_height": 150,
+        "background": "",
+        "background_gradient": ""
+      }
+    },
+    "media_with_text_3freHf": {
+      "type": "media-with-text",
+      "blocks": {
+        "image_At9EEc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/INTI-JULY1-AM-05.webp",
+            "media_width": 50,
+            "media_position": "start",
+            "text_position": "place-self-center text-center",
+            "icon": "none",
+            "custom_icon": "shopify://shop_images/INTI_emblem_electric_NEW.webp",
+            "icon_width": 120,
+            "subheading": "",
+            "title": "INTI Founder’s Edition",
+            "content": "<h3>Claim Your Exclusive INTI FE (Founder’s Edition) by ordering one of the first 250 production solar cars to be made.<br/></h3><p>Only 250 solar trailblazers will own an INTI FE - a masterpiece packed with premium features including a touch screen LCD dashboard display, sport seats and steering wheel, extended range battery, and alloy wheels. Each INTI FE comes with a numbered certificate signed by our founder Julian Field – securing its unique place in automotive history. Hurry - when 250 deposits are received this exclusive offer closes. Secure yours now.</p>",
+            "link_text": "Secure Your Founder's Edition INTI - Reserve Now",
+            "link_url": "shopify://products/inti-solar-electric-car",
+            "background": "#0892d0",
+            "background_gradient": "",
+            "text_color": "#ffffff",
+            "text_gradient": "",
+            "button_background": "#f0c417",
+            "button_text_color": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_At9EEc"
+      ],
+      "custom_css": [],
+      "settings": {
+        "full_width": true,
+        "alternate_media_position": false,
+        "spacing": "none"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "166442457738b23caf-0": {
+          "type": "item",
+          "settings": {
+            "title": "1) Place Your $100 Refundable Deposit​",
+            "content": "<p>Secure your INTI with a $100 deposit - fully refundable until you sign the purchase agreement.</p>"
+          }
+        },
+        "166442457738b23caf-1": {
+          "type": "item",
+          "settings": {
+            "title": "2) Complete Your Purchase Agreement",
+            "content": "<p>We’ll reach out this summer to finalize your purchase agreement, locking in your exclusive Founder's Edition spot.</p>"
+          }
+        },
+        "item_Tga6xG": {
+          "type": "item",
+          "settings": {
+            "title": "3) Coordinate Payment & Delivery",
+            "content": "<p>After your agreement, we’ll arrange payment and delivery timing - your INTI arrives ready to ride!</p>"
+          }
+        },
+        "166442457738b23caf-2": {
+          "type": "item",
+          "settings": {
+            "title": "4) Delivery Targeted for October 2025",
+            "content": "<p>Our INTI prototypes are built and rigorously tested - your first commercially available INTI is on track for October 2025.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "166442457738b23caf-0",
+        "166442457738b23caf-1",
+        "item_Tga6xG",
+        "166442457738b23caf-2"
+      ],
+      "settings": {
+        "full_width": true,
+        "subheading": "",
+        "title": "Your Path to INTI Ownership",
+        "content": "<h3>It’s simple, secure, and refundable - just <strong>FOUR</strong> easy steps to reserve your INTI and bring it home.</h3>",
+        "team_avatar_width": 350,
+        "support_hours": "Need help along the way? We make ownership simple - including support. Our team is ready Monday to Friday: 8am-5:30pm.",
+        "answer_time": "support@solartransportsystems.com",
+        "button_text": "Deposit Now - Start Your Journey",
+        "button_url": "shopify://products/inti-solar-electric-car",
+        "text_position": "center",
+        "background": "#ffffff",
+        "background_gradient": "",
+        "text_color": "#0892d0",
+        "heading_color": "",
+        "heading_gradient": "",
+        "button_background": "#f0c417",
+        "button_text_color": "#ffffff",
+        "accordion_background": "#0892d0",
+        "accordion_text_color": "#ffffff"
+      }
+    }
+  },
+  "order": [
+    "slideshow",
+    "image_link_blocks_ADpLCb",
+    "hot_spots_VnPVBx",
+    "media_grid_QRhU7L",
+    "media_with_text_3freHf",
+    "faq"
+  ]
+}
