@@ -1,972 +1,497 @@
-{%- render 'section-spacing-collapsing' -%}
-
-<style>
-  /* Reset default section constraints */
-  #shopify-section-{{ section.id }} {
-    width: 100% !important;
-    max-width: none !important;
-  }
-
-  #shopify-section-{{ section.id }} > * {
-    max-width: none !important;
-  }
-
-  #shopify-section-{{ section.id }} * {
-    box-sizing: border-box;
-  }
-
-  /* Custom styles */
-  .product-customization-container {
-    background: {{ section.settings.custom_background | default: '#f5f5f5' }};
-    padding: 60px 0;
-    min-height: 600px;
-    width: 100%;
-    margin: 0;
+<style>.product-header_add-to-cart-wrapper {
     display: flex;
-    align-items: center;
+     flex-direction: column;
+     grid-column-gap: 0.5rem;
+     grid-row-gap: 0.5rem
   }
-
-  .product-customization-wrapper {
-    max-width: {{ section.settings.max_width }}px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
+  .is-product-thumbnail {
+    width: 5rem;
+     height: 5rem
   }
-
-  @media screen and (min-width: 1600px) {
-    .product-customization-wrapper {
-      gap: 100px;
-    }
-  }
-
-  @media screen and (min-width: 1800px) {
-    .product-customization-wrapper {
-      padding: 0 60px;
-    }
-  }
-
-  @media screen and (max-width: 1200px) {
-    .product-customization-wrapper {
-      gap: 60px;
-    }
-  }
-
-  @media screen and (max-width: 768px) {
-    .product-customization-container {
-      padding: 40px 0;
-    }
-
-    .product-customization-wrapper {
-      grid-template-columns: 1fr;
-      gap: 30px;
-      padding: 0 20px;
-    }
-
-    .product-media-section {
-      order: 2;
-    }
-
-    .product-info-custom {
-      order: 1;
-      padding-left: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .customize-heading,
-    .color-label,
-    .price-reservation {
-      text-align: center;
-    }
-
-    .color-options,
-    .seat-color-options {
-      justify-content: center;
-    }
-
-    .customization-options {
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .reserve-button {
-      max-width: 100%;
-    }
-      }
-  }
-
-  .product-media-section {
+  .product-header_shipping-wrapper {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width: 100%;
+     padding-top: 1.5rem;
+     padding-bottom: 1.5rem;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     grid-column-gap: 0.5rem;
+     grid-row-gap: 0.5rem;
+     border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: hsla(0, 0.00%, 0.00%, 0.08);
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: hsla(0, 0.00%, 0.00%, 0.08)
   }
-
-  #product-image-container {
-    position: relative;
+  .product-header_gallery-image {
     width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    aspect-ratio: 1;
+     height: 40rem;
+     padding-top: 1rem;
+     padding-right: 1rem;
+     padding-bottom: 1rem;
+     padding-left: 1rem;
+     border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: #ccc;
+     border-right-style: solid;
+     border-right-width: 1px;
+     border-right-color: #ccc;
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: #ccc;
+     border-left-style: solid;
+     border-left-width: 1px;
+     border-left-color: #ccc;
+     border-top-left-radius: 0.5rem;
+     border-top-right-radius: 0.5rem;
+     border-bottom-left-radius: 0.5rem;
+     border-bottom-right-radius: 0.5rem;
+     background-color: #eee;
+     object-fit: contain;
+     object-position: 50% 50%}
+  @media screen and (max-width: 479px) {
+    .product-header_gallery-image {
+      height: 22rem
+    }
   }
-
-  .product-variant-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .section_product-header {
+    position: relative
+  }
+  .text-size-large {
+    font-size: 1.5rem
+  }
+  @media screen and (max-width: 767px) {
+    .text-size-large {
+      font-size: 1.25rem
+    }
+  }
+  .pointer-events-on {
+    left: -1.5rem
+  }
+  @media screen and (max-width: 479px) {
+    .pointer-events-on {
+      width: 2.5rem;
+       height: 2.5em
+    }
+  }
+  .swiper_button-wrapper {
+    display: flex;
+     justify-content: flex-start;
+     flex-wrap: wrap;
+     align-items: center;
+     grid-column-gap: 0.75rem;
+     grid-row-gap: 0.75rem
+  }
+  .swiper_button {
+    position: relative;
+     display: flex;
+     width: 3rem;
+     height: 3rem;
+     justify-content: center;
+     align-items: center;
+     border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: #eee;
+     border-right-style: solid;
+     border-right-width: 1px;
+     border-right-color: #eee;
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: #eee;
+     border-left-style: solid;
+     border-left-width: 1px;
+     border-left-color: #eee;
+     border-top-left-radius: 100vw;
+     border-top-right-radius: 100vw;
+     border-bottom-left-radius: 100vw;
+     border-bottom-right-radius: 100vw;
+     background-color: hsla(0, 0.00%, 100.00%, 1.00);
+     transition-property: color, background-color;
+     transition-duration: 200ms, 200ms;
+     transition-timing-function: ease, ease;
+     text-align: center
+  }
+  .swiper_button:hover {
+    color: hsla(0, 0.00%, 12.16%, 1.00)
+  }
+  .pointer-events-on {
+    right: -1.5rem
+  }
+  @media screen and (max-width: 479px) {
+    .pointer-events-on {
+      width: 2.5rem;
+       height: 2.5rem
+    }
+  }
+  .product-header_slider-wrapper {
+    position: relative;
+     margin-top: 1rem
+  }
+  .swiper-wrapper {
+    display: flex;
+     align-items: flex-start
+  }
+  .product-header_radio-button {
     position: absolute;
-    top: 0;
-    left: 0;
-    transition: opacity 0.3s ease;
+     left: 0%;
+     top: 0%;
+     right: 0%;
+     bottom: 0%;
+     width: auto;
+     height: auto;
+     margin-top: 0px;
+     margin-left: 0px;
+     border-top-width: 0px;
+     border-top-color: black;
+     border-right-width: 0px;
+     border-right-color: black;
+     border-bottom-width: 0px;
+     border-bottom-color: black;
+     border-left-width: 0px;
+     border-left-color: black;
+     border-top-left-radius: 0%;
+     border-top-right-radius: 0%;
+     border-bottom-left-radius: 0%;
+     border-bottom-right-radius: 0%}
+  .product-header_radio-button.main_redirected-checked {
+    border-top-width: 1px;
+     border-top-color: black;
+     border-right-width: 1px;
+     border-right-color: black;
+     border-bottom-width: 1px;
+     border-bottom-color: black;
+     border-left-width: 1px;
+     border-left-color: black
   }
-
-  .product-variant-image.hidden {
-    opacity: 0;
-    pointer-events: none;
+  .is-product-thumbnail {
+    width: 100%}
+  .product-header_radio-list {
+    display: flex;
+     flex-wrap: wrap;
+     grid-column-gap: 0.5rem;
+     grid-row-gap: 0.5rem
   }
-
-  .product-info-custom {
-    max-width: 600px;
+  .pointer-events-off {
+    border-top-color: #ccc;
+     border-right-color: #ccc;
+     border-bottom-color: #ccc;
+     border-left-color: #ccc
+  }
+  .product-header_option-list {
+    display: flex;
+     flex-direction: column;
+     grid-column-gap: 0.5rem;
+     grid-row-gap: 0.5rem
+  }
+  .container-large {
     width: 100%;
+     max-width: 85rem;
+     margin-right: auto;
+     margin-left: auto
   }
-
-  @media screen and (min-width: 769px) {
-    .product-info-custom {
-      padding-left: 20px;
-    }
+  .is-product-gallery {
+    position: sticky;
+     top: 6rem;
+     width: 100%;
+     height: auto;
+     min-width: 100%}
+  .is-product-gallery.medium {
+    position: static;
+     padding-right: 0rem
   }
-
-  .customize-heading {
-    font-size: {{ section.settings.heading_size | default: '36' }}px;
-    font-weight: 400;
-    margin-bottom: 30px;
-    color: {{ section.settings.heading_color | default: '#1a1a1a' }};
-    line-height: 1.3;
-    text-align: left;
-  }
-
-  .customization-options {
-    display: flex;
-    gap: 40px;
-    margin-bottom: 40px;
-    justify-content: flex-start;
-  }
-
-  .custom-option {
-    text-align: center;
-    flex: 0 0 auto;
-  }
-
-  .custom-option-icon {
-    width: 50px;
-    height: 50px;
-    margin: 0 auto 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .custom-option-icon svg {
-    width: 40px;
-    height: 40px;
-    stroke: {{ section.settings.icon_color | default: '#4fc3f7' }};
-    fill: none;
-    stroke-width: 1.5;
-  }
-
-  .custom-option-text {
-    font-size: 13px;
-    color: {{ section.settings.feature_text_color | default: '#666' }};
-    line-height: 1.3;
-  }
-
-  .color-selection {
-    margin-bottom: 25px;
-  }
-
-  .color-label {
-    font-size: 14px;
-    color: {{ section.settings.label_color | default: '#333' }};
-    margin-bottom: 12px;
-  }
-
-  .color-options {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .color-option {
-    width: 45px;
-    height: 45px;
-    border-radius: {{ section.settings.swatch_border_radius | default: '6' }}px;
-    cursor: pointer;
-    position: relative;
-    transition: all 0.2s;
-    border: 2px solid transparent;
-  }
-
-  .color-option:hover {
-    transform: scale(1.05);
-  }
-
-  .color-option.selected {
-    border-color: {{ section.settings.selected_color | default: '#4fc3f7' }};
-    box-shadow: 0 0 0 1px {{ section.settings.selected_color | default: '#4fc3f7' }};
-  }
-
-  /* Default color styles */
-  .color-option[data-color*="hite"],
-  .color-option[data-color*="HITE"] {
-    background: #f0f0f0;
-    border: 1px solid #ddd;
-  }
-
-  .color-option[data-color*="lack"],
-  .color-option[data-color*="LACK"] {
-    background: #1a1a1a;
-  }
-
-  .color-option[data-color*="ray"],
-  .color-option[data-color*="RAY"],
-  .color-option[data-color*="rey"],
-  .color-option[data-color*="REY"] {
-    background: #8e8e8e;
-  }
-
-  .color-option[data-color*="ed"],
-  .color-option[data-color*="ED"] {
-    background: #e53935;
-  }
-
-  .color-option[data-color*="lue"],
-  .color-option[data-color*="LUE"] {
-    background: #1976d2;
-  }
-
-  .color-option[data-color*="reen"],
-  .color-option[data-color*="REEN"] {
-    background: #4caf50;
-  }
-
-  .color-option[data-color*="ellow"],
-  .color-option[data-color*="ELLOW"] {
-    background: #fdd835;
-  }
-
-  .color-option[data-color*="range"],
-  .color-option[data-color*="RANGE"] {
-    background: #ff6f00;
-  }
-
-  .color-option[data-color*="urple"],
-  .color-option[data-color*="URPLE"] {
-    background: #7b1fa2;
-  }
-
-  .color-option[data-color*="ink"],
-  .color-option[data-color*="INK"] {
-    background: #e91e63;
-  }
-
-  .color-option[data-color*="rown"],
-  .color-option[data-color*="ROWN"] {
-    background: #795548;
-  }
-
-  .seat-color-selection {
-    margin-bottom: 40px;
-  }
-
-  .seat-color-options {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-  }
-
-  .seat-color-option {
-    width: 65px;
-    height: 65px;
-    border-radius: 8px;
-    cursor: pointer;
-    position: relative;
+  .is-product-gallery {
     overflow: hidden;
-    transition: all 0.2s;
-    border: 2px solid transparent;
+     height: auto;
+     flex-grow: 1;
+     flex-shrink: 1;
+     flex-basis: 0%}
+  .text-size-regular {
+    font-size: 1rem
   }
-
-  .seat-color-option:hover {
-    transform: scale(1.05);
+  .is-product-slider {
+    position: absolute;
+     left: 0%;
+     top: 0%;
+     right: 0%;
+     bottom: 0%;
+     justify-content: space-between
   }
-
-  .seat-color-option.selected {
-    border-color: {{ section.settings.selected_color | default: '#4fc3f7' }};
-    box-shadow: 0 0 0 1px {{ section.settings.selected_color | default: '#4fc3f7' }};
+  .product_thumbnail-image {
+    display: flex;
+     height: 100%;
+     justify-content: center;
+     align-items: center;
+     border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: #ccc;
+     border-right-style: solid;
+     border-right-width: 1px;
+     border-right-color: #ccc;
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: #ccc;
+     border-left-style: solid;
+     border-left-width: 1px;
+     border-left-color: #ccc;
+     border-top-left-radius: 0.5rem;
+     border-top-right-radius: 0.5rem;
+     border-bottom-left-radius: 0.5rem;
+     border-bottom-right-radius: 0.5rem;
+     background-color: #eee;
+     cursor: pointer
   }
-
-  .seat-color-option img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .is-active {
+    border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: #9b9b9b;
+     border-right-style: solid;
+     border-right-width: 1px;
+     border-right-color: #9b9b9b;
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: #9b9b9b;
+     border-left-style: solid;
+     border-left-width: 1px;
+     border-left-color: #9b9b9b
   }
-
-  .diagonal-split {
-    width: 100%;
-    height: 100%;
+  .product-header_radio {
     position: relative;
+     padding-top: 0.4rem;
+     padding-right: 1rem;
+     padding-bottom: 0.3rem;
+     padding-left: 1rem;
+     border-top-left-radius: 0.5rem;
+     border-top-right-radius: 0.5rem;
+     border-bottom-left-radius: 0.5rem;
+     border-bottom-right-radius: 0.5rem;
+     background-color: #eee;
+     font-weight: 600
   }
-
-  .diagonal-split::before,
-  .diagonal-split::after {
-    content: '';
-    position: absolute;
+  .product-header_radio.medium {
+    background-color: white
+  }
+  .heading-style-h2 {
+    font-size: 2.5rem;
+     line-height: 1;
+     font-weight: 600
+  }
+  @media screen and (max-width: 767px) {
+    .heading-style-h2 {
+      font-size: 2rem
+    }
+  }
+  @media screen and (max-width: 479px) {
+    .heading-style-h2 {
+      font-size: 2rem
+    }
+  }
+  .product-header_gallery-lightbox {
     width: 100%;
-    height: 100%;
+     height: 100%}
+  .is-product-gallery {
+    width: 100%}
+  .product-header_layout {
+    display: grid;
+     justify-items: stretch;
+     align-items: start;
+     grid-auto-columns: 1fr;
+     grid-column-gap: 0px;
+     grid-row-gap: 0px;
+     grid-template-columns: 1fr 1fr;
+     grid-template-rows: auto
   }
-
-  .diagonal-split::before {
-    background: var(--color1);
-    clip-path: polygon(0 0, 100% 0, 0 100%);
+  @media screen and (max-width: 479px) {
+    .product-header_layout {
+      grid-template-columns: 1fr
+    }
   }
-
-  .diagonal-split::after {
-    background: var(--color2);
-    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  .product-header_layout.medium {
+    min-height: auto;
+     grid-auto-flow: row;
+     grid-column-gap: 5rem;
+     grid-row-gap: 2.5rem;
+     grid-template-columns: 1fr
   }
-
-  /* Auto-detect seat colors from variant names */
-  .seat-color-option[data-value*="Red"] { --color1: #e53935; }
-  .seat-color-option[data-value*="Black"] { --color2: #1a1a1a; }
-  .seat-color-option[data-value*="White"] { --color1: #f0f0f0; }
-  .seat-color-option[data-value*="Blue"] { --color1: #1976d2; }
-  .seat-color-option[data-value*="Gray"] { --color1: #8e8e8e; }
-  .seat-color-option[data-value*="Grey"] { --color1: #8e8e8e; }
-  .seat-color-option[data-value*="Green"] { --color1: #4caf50; }
-  .seat-color-option[data-value*="Brown"] { --color1: #795548; }
-  .seat-color-option[data-value*="Tan"] { --color1: #d4a574; }
-  .seat-color-option[data-value*="Beige"] { --color1: #f5deb3; }
-
-  /* If only one color, use solid background */
-  .seat-color-option:not([data-value*="/"]) .diagonal-split::before {
-    clip-path: none;
+  @media screen and (max-width: 767px) {
+    .product-header_layout {
+      grid-column-gap: 5rem;
+       grid-row-gap: 2rem
+    }
   }
-  .seat-color-option:not([data-value*="/"]) .diagonal-split::after {
+  .swiper_button-icon {
+    width: 30%;
+     height: 55%;
+     color: hsla(60, 3.57%, 10.98%, 1.00)
+  }
+  .swiper-container {
+    height: 100%}
+  .product-header_price-wrapper {
+    position: relative;
+     display: flex;
+     align-items: center;
+     grid-column-gap: 0.5rem;
+     grid-row-gap: 0.5rem
+  }
+  .is-product-gallery {
+    height: auto
+  }
+  .is-product-gallery.medium {
+    width: 100%}
+  .product-header_benefits-bullet {
+    display: grid;
+     grid-auto-columns: 1fr;
+     grid-column-gap: 16px;
+     grid-row-gap: 16px;
+     grid-template-columns: 1fr 1fr 1fr;
+     grid-template-rows: auto
+  }
+  .hide {
     display: none;
+     flex-grow: 1;
+     flex-shrink: 1;
+     flex-basis: 0%}
+  .swiper-slide {
+    height: 100%;
+     max-width: 100%;
+     margin-bottom: 0rem;
+     flex-grow: 0;
+     flex-shrink: 0;
+     flex-basis: auto
   }
-
-  .price-reservation {
-    text-align: left;
+  .is-reversed {
+    transform: rotate(-180deg)
   }
-
-  .product-price {
-    font-size: 32px;
-    font-weight: 400;
-    margin-bottom: 5px;
-    color: {{ section.settings.price_color | default: '#1a1a1a' }};
+  .button {
+    padding-top: 0.75rem;
+     padding-right: 1.5rem;
+     padding-bottom: 0.75rem;
+     padding-left: 1.5rem;
+     border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: black;
+     border-right-style: solid;
+     border-right-width: 1px;
+     border-right-color: black;
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: black;
+     border-left-style: solid;
+     border-left-width: 1px;
+     border-left-color: black;
+     border-top-left-radius: 0.5rem;
+     border-top-right-radius: 0.5rem;
+     border-bottom-left-radius: 0.5rem;
+     border-bottom-right-radius: 0.5rem;
+     background-color: black;
+     color: white;
+     font-weight: 400;
+     text-align: center;
+     white-space: nowrap
   }
-
-  .price-note {
-    font-size: 12px;
-    color: {{ section.settings.price_note_color | default: '#666' }};
-    margin-bottom: 20px;
+  .product-header_default-state {
+    display: flex;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     grid-column-gap: 1.5rem;
+     grid-row-gap: 1.5rem
   }
-
-  .reservation-text {
-    font-size: 16px;
-    color: {{ section.settings.reservation_text_color | default: '#333' }};
-    margin-bottom: 20px;
+  .product-header_buy-wrappper {
+    display: flex;
+     grid-column-gap: 0.5rem;
+     grid-row-gap: 0.5rem
   }
-
-  .reservation-amount {
-    color: {{ section.settings.reservation_amount_color | default: '#4fc3f7' }};
-    font-weight: 500;
+  .is-secondary {
+    border-top-style: solid;
+     border-top-width: 1px;
+     border-top-color: black;
+     border-right-style: solid;
+     border-right-width: 1px;
+     border-right-color: black;
+     border-bottom-style: solid;
+     border-bottom-width: 1px;
+     border-bottom-color: black;
+     border-left-style: solid;
+     border-left-width: 1px;
+     border-left-color: black;
+     background-color: transparent;
+     color: hsla(0, 0.00%, 0.00%, 1.00)
   }
-
-  .reserve-button {
-    background: {{ section.settings.button_background | default: '#4fc3f7' }};
-    color: {{ section.settings.button_text_color | default: '#ffffff' }};
-    padding: 14px 32px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.3s;
-    width: 100%;
-    max-width: 280px;
+  .padding-global {
+    padding-right: 2.5rem;
+     padding-left: 2.5rem
   }
-
-  .reserve-button:hover {
-    background: {{ section.settings.button_hover_background | default: '#29b6f6' }};
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  @media screen and (max-width: 767px) {
+    .padding-global {
+      padding-right: 1.25rem;
+       padding-left: 1.25rem
+    }
   }
-
-  /* Hide the original product form */
-  .product-form-container {
-    position: absolute;
-    left: -9999px;
-    visibility: hidden;
+  .product-header_product-details {
+    display: flex;
+     padding-top: 3rem;
+     padding-bottom: 3rem;
+     padding-left: 5rem;
+     flex-direction: column;
+     flex-wrap: nowrap;
+     grid-column-gap: 1.5rem;
+     grid-row-gap: 1.5rem
   }
-</style>
-
-{%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
-
-{%- comment -%}
-  Determine which option is body color and which is seat color
-{%- endcomment -%}
-{%- assign body_color_option_index = nil -%}
-{%- assign seat_color_option_index = nil -%}
-
-{%- for option in product.options_with_values -%}
-  {%- assign option_name_downcase = option.name | downcase -%}
-  {%- if option_name_downcase contains 'body' or option_name_downcase == 'color' -%}
-    {%- assign body_color_option_index = forloop.index0 -%}
-  {%- elsif option_name_downcase contains 'seat' or option_name_downcase contains 'interior' -%}
-    {%- assign seat_color_option_index = forloop.index0 -%}
-  {%- endif -%}
-{%- endfor -%}
-
-{%- comment -%}
-  If not found by name, use position (first option = body color, second = seat color)
-{%- endcomment -%}
-{%- if body_color_option_index == nil and product.options_with_values.size > 0 -%}
-  {%- assign body_color_option_index = 0 -%}
-{%- endif -%}
-{%- if seat_color_option_index == nil and product.options_with_values.size > 1 -%}
-  {%- assign seat_color_option_index = 1 -%}
-{%- endif -%}
-
-<!-- Full width container without any constraining wrappers -->
-<div class="product-customization-container">
-  <div class="product-customization-wrapper">
-    <!-- Product Media Section -->
-    <div class="product-media-section">
-      <div id="product-image-container">
-        {%- if product.media.size > 0 -%}
-          {%- comment -%} Show variant images {%- endcomment -%}
-          {%- for variant in product.variants -%}
-            {%- if variant.featured_media -%}
-              <img 
-                data-variant-id="{{ variant.id }}"
-                src="{{ variant.featured_media | image_url: width: 1000 }}"
-                loading="{% if variant == product.selected_or_first_available_variant %}eager{% else %}lazy{% endif %}"
-                widths="350,500,700,1000"
-                class="product-variant-image {% unless variant == product.selected_or_first_available_variant %}hidden{% endunless %}"
-                alt="{{ product.title }} - {{ variant.title }}"
-              >
-            {%- endif -%}
-          {%- endfor -%}
-          
-          {%- comment -%} Fallback to featured image if no variant images {%- endcomment -%}
-          {%- assign has_variant_images = false -%}
-          {%- for variant in product.variants -%}
-            {%- if variant.featured_media -%}
-              {%- assign has_variant_images = true -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
-          
-          {%- unless has_variant_images -%}
-            <img 
-              data-variant-id="default"
-              src="{{ product.featured_media | image_url: width: 1000 }}"
-              loading="eager"
-              widths="350,500,700,1000"
-              class="product-variant-image"
-              alt="{{ product.title }}"
-            >
-          {%- endunless -%}
-        {%- endif -%}
-      </div>
-    </div>
-
-    <!-- Product Info Section -->
-    <div class="product-info-custom">
-      <h1 class="customize-heading">
-        {%- if section.settings.custom_heading != blank -%}
-          {{ section.settings.custom_heading | replace: '[product_title]', product.title | newline_to_br }}
-        {%- else -%}
-          Customize your<br>
-          {{ product.title }}
-        {%- endif -%}
-      </h1>
-      
-      <!-- Customization Options -->
-      {%- if section.settings.show_features -%}
-        <div class="customization-options">
-          {%- assign feature_blocks = section.blocks | where: 'type', 'feature' -%}
-          {%- if feature_blocks.size == 0 -%}
-            <!-- Default features if no blocks added -->
-            <div class="custom-option">
-              <div class="custom-option-icon">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" />
-                  <path d="M3 9h18M9 21V9" stroke-width="1.5" />
-                </svg>
-              </div>
-              <div class="custom-option-text">
-                70 mile<br>battery<br>range
-              </div>
-            </div>
-            <div class="custom-option">
-              <div class="custom-option-icon">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke-width="1.5" />
-                  <path d="M12 7v5l3 3" stroke-width="1.5" />
-                </svg>
-              </div>
-              <div class="custom-option-text">
-                Travel<br>up to<br>25 mph
-              </div>
-            </div>
-            <div class="custom-option">
-              <div class="custom-option-icon">
-                <svg viewBox="0 0 24 24" fill="none">
-                  <circle cx="12" cy="12" r="9" stroke-width="1.5" />
-                  <circle cx="12" cy="12" r="3" stroke-width="1.5" />
-                  <path d="M12 3v3M12 18v3M3 12h3M18 12h3" stroke-width="1.5" />
-                </svg>
-              </div>
-              <div class="custom-option-text">
-                35 Free<br>Solar<br>Miles<br>Daily
-              </div>
-            </div>
-          {%- else -%}
-            {%- for block in feature_blocks -%}
-              <div class="custom-option">
-                <div class="custom-option-icon">
-                  {%- if block.settings.icon_svg != blank -%}
-                    {{ block.settings.icon_svg }}
-                  {%- else -%}
-                    <svg viewBox="0 0 24 24" fill="none">
-                      <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="1.5" />
-                      <path d="M3 9h18M9 21V9" stroke-width="1.5" />
-                    </svg>
-                  {%- endif -%}
-                </div>
-                <div class="custom-option-text">
-                  {{ block.settings.text | newline_to_br }}
-                </div>
-              </div>
-            {%- endfor -%}
-          {%- endif -%}
-        </div>
-      {%- endif -%}
-
-      <!-- Body Color Selection (from product variants) -->
-      {%- if body_color_option_index != nil -%}
-        {%- assign body_color_option = product.options_with_values[body_color_option_index] -%}
-        {%- if body_color_option and body_color_option.values.size > 0 -%}
-          <div class="color-selection">
-            <div class="color-label">{{ section.settings.body_color_label | default: 'Select body color:' }}</div>
-            <div class="color-options" id="body-color-options">
-              {%- for color in body_color_option.values -%}
-                <div 
-                  class="color-option {% if forloop.first %}selected{% endif %}" 
-                  data-color="{{ color }}" 
-                  data-value="{{ color }}"
-                  data-option-index="{{ body_color_option_index }}"
-                ></div>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-      {%- endif -%}
-
-      <!-- Seat Color Selection (from product variants) -->
-      {%- if seat_color_option_index != nil -%}
-        {%- assign seat_color_option = product.options_with_values[seat_color_option_index] -%}
-        {%- if seat_color_option and seat_color_option.values.size > 0 -%}
-          <div class="seat-color-selection">
-            <div class="color-label">{{ section.settings.seat_color_label | default: 'Select seat color:' }}</div>
-            <div class="seat-color-options" id="seat-color-options">
-              {%- for seat_color in seat_color_option.values -%}
-                <div 
-                  class="seat-color-option {% if forloop.first %}selected{% endif %}" 
-                  data-value="{{ seat_color }}"
-                  data-option-index="{{ seat_color_option_index }}"
-                >
-                  {%- comment -%} Check if we have custom images for seat colors {%- endcomment -%}
-                  {%- assign seat_image_found = false -%}
-                  {%- for block in section.blocks -%}
-                    {%- if block.type == 'seat_color' and block.settings.variant_value == seat_color and block.settings.image != blank -%}
-                      <img src="{{ block.settings.image | image_url: width: 130 }}" alt="{{ seat_color }}">
-                      {%- assign seat_image_found = true -%}
-                      {%- break -%}
-                    {%- endif -%}
-                  {%- endfor -%}
-                  
-                  {%- unless seat_image_found -%}
-                    {%- if seat_color contains '/' -%}
-                      {%- assign colors = seat_color | split: '/' -%}
-                      {%- assign color1 = colors[0] | strip -%}
-                      {%- assign color2 = colors[1] | strip -%}
-                      <div class="diagonal-split" style="--color1: {{ color1 }}; --color2: {{ color2 }};"></div>
-                    {%- else -%}
-                      <div class="diagonal-split" style="--color1: {{ seat_color }}; --color2: {{ seat_color }};"></div>
-                    {%- endif -%}
-                  {%- endunless -%}
-                </div>
-              {%- endfor -%}
-            </div>
-          </div>
-        {%- endif -%}
-      {%- endif -%}
-
-      <!-- Price and Reservation -->
-      <div class="price-reservation">
-        <div class="product-price">
-          {%- if section.settings.show_full_price -%}
-            {{ product.price | money }}
-          {%- else -%}
-            {{ section.settings.reservation_price | default: '$100' }}
-          {%- endif -%}
-        </div>
-        <div class="price-note">{{ section.settings.price_note | default: '*Price subject to change' }}</div>
-        <div class="reservation-text">
-          {{ section.settings.reservation_text | default: "Reserve your's today:" }}
-          <span class="reservation-amount">{{ section.settings.reservation_price | default: '$100' }}</span>
-        </div>
-        <button type="submit" form="{{ product_form_id }}" class="reserve-button">
-          {{ section.settings.button_text | default: 'Reserve your' }} {{ product.title }}
-        </button>
-      </div>
-    </div>
-  </div>
+  .product-header_product-details.medium {
+    padding-left: 0rem
+  }
+  @media screen and (max-width: 479px) {
+    .product-header_product-details {
+      padding-top: 0rem;
+       padding-bottom: 0rem
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .product-header_product-details {
+      padding-top: 0rem
+    }
+  }
+  .is-product-thumbnail {
+    position: relative;
+     overflow: hidden;
+     height: 5rem
+  }
+</style><div class="padding-global padding-section-small"><div class="container-large"><div class="product-header_component"><script src="{{ 'liquify_custom.js' | asset_url }}" type="text/javascript"></script>
+<div class="product-header_layout" li-element="product-variant-container" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)"><div class="swiper-container is-product-gallery"><div class="swiper is-product-gallery"><div class="swiper-wrapper is-product-gallery" id="my-gallery">{% for image in product.images %}    <div class="swiper-slide is-product-gallery" li-for="image in product.images">
+                                    
+                            <div class="product-header_gallery-lightbox"><img class="product-header_gallery-image" width="auto" height="auto" alt="{{ image.alt }}" src="{{ image.src | product_img_url: 'master' }}" loading="lazy" li-object:src="image.src | product_img_url: 'master'" li-object:alt="image.alt" data-dyn-bind="[object Object]">
 </div>
+                            
+                        </div>
+{% endfor %}</div></div><div class="product-header_slider-wrapper"><div class="swiper_button-wrapper is-product-slider pointer-events-off z-index-1 hide-mobile-landscape"><a class="swiper_button swiper-prev pointer-events-on" aria-label="Previous Slide"><div class="swiper_button-icon is-reversed"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 29.541 22.323"><g id="Group_44" data-name="Group 44" transform="translate(0 1.014)"><path id="Path_1" data-name="Path 1" d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></path><line id="Line_1" data-name="Line 1" x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></line></g></svg></div></a><a class="swiper_button swiper-next pointer-events-on" aria-label="Next Slide"><div class="swiper_button-icon"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewbox="0 0 29.541 22.323"><g id="Group_44" data-name="Group 44" transform="translate(0 1.014)"><path id="Path_1" data-name="Path 1" d="M115.445,20.633l9.311-10.148L115.445.338" transform="translate(-97.25 -0.338)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></path><line id="Line_1" data-name="Line 1" x1="27.506" transform="translate(0 10.148)" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="3"></line></g></svg></div></a></div><div class="swiper is-product-thumbnail"><div class="swiper-wrapper is-product-thumbnail">{% for image in product.images %}    <div class="swiper-slide is-product-thumbnail" li-for="image in product.images">
+                                    
+                            <img class="product_thumbnail-image" width="auto" height="auto" alt="{{ image.alt }}" src="{{ image.src | product_img_url: 'master' }}" loading="lazy" li-object:src="image.src | product_img_url: 'master'" li-object:alt="image.alt" data-dyn-bind="[object Object]">
 
-<!-- Hidden product form for functionality -->
-<div class="product-form-container">
-  <product-form>
-    <form id="{{ product_form_id }}" method="post" action="/cart/add" accept-charset="UTF-8" enctype="multipart/form-data">
-      <input type="hidden" name="form_type" value="product">
-      <input type="hidden" name="utf8" value="✓">
-      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-    </form>
-  </product-form>
-</div>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  const productImages = document.querySelectorAll('.product-variant-image');
-  const variants = {{ product.variants | json }};
-  const form = document.getElementById('{{ product_form_id }}');
-  const variantInput = form.querySelector('input[name="id"]');
-  
-  // Handle body color selection
-  const bodyColorOptions = document.querySelectorAll('#body-color-options .color-option');
-  bodyColorOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      bodyColorOptions.forEach(opt => opt.classList.remove('selected'));
-      this.classList.add('selected');
-      updateVariantAndImage();
-    });
-  });
-
-  // Handle seat color selection
-  const seatColorOptions = document.querySelectorAll('#seat-color-options .seat-color-option');
-  seatColorOptions.forEach(option => {
-    option.addEventListener('click', function() {
-      seatColorOptions.forEach(opt => opt.classList.remove('selected'));
-      this.classList.add('selected');
-      updateVariantAndImage();
-    });
-  });
-
-  function updateVariantAndImage() {
-    // Get selected values
-    const selectedOptions = [];
-    
-    // Get body color
-    const selectedBodyColor = document.querySelector('#body-color-options .color-option.selected');
-    if (selectedBodyColor) {
-      const index = parseInt(selectedBodyColor.getAttribute('data-option-index'));
-      selectedOptions[index] = selectedBodyColor.getAttribute('data-value');
-    }
-    
-    // Get seat color
-    const selectedSeatColor = document.querySelector('#seat-color-options .seat-color-option.selected');
-    if (selectedSeatColor) {
-      const index = parseInt(selectedSeatColor.getAttribute('data-option-index'));
-      selectedOptions[index] = selectedSeatColor.getAttribute('data-value');
-    }
-    
-    // Find matching variant
-    const matchingVariant = variants.find(variant => {
-      return variant.options.every((option, index) => {
-        return !selectedOptions[index] || option === selectedOptions[index];
-      });
-    });
-    
-    if (matchingVariant) {
-      // Update form
-      variantInput.value = matchingVariant.id;
-      
-      // Update images
-      productImages.forEach(img => img.classList.add('hidden'));
-      
-      if (matchingVariant.featured_media) {
-        const matchingImage = document.querySelector(`[data-variant-id="${matchingVariant.id}"]`);
-        if (matchingImage) {
-          matchingImage.classList.remove('hidden');
-        }
-      } else {
-        // Show default image if variant has no specific image
-        const defaultImage = document.querySelector('[data-variant-id="default"]');
-        if (defaultImage) {
-          defaultImage.classList.remove('hidden');
-        } else if (productImages.length > 0) {
-          productImages[0].classList.remove('hidden');
-        }
-      }
-      
-      // Trigger Shopify's variant change event
-      const event = new Event('change', { bubbles: true });
-      form.dispatchEvent(event);
-    }
-  }
-  
-  // Initialize
-  updateVariantAndImage();
-});
-</script>
-
-{% schema %}
-{
-  "name": "Product page",
-  "class": "shopify-section--main-product",
-  "tag": "section",
-  "blocks": [
-    {
-      "type": "@app"
-    },
-    {
-      "type": "feature",
-      "name": "Product Feature",
-      "settings": [
-        {
-          "type": "html",
-          "id": "icon_svg",
-          "label": "Icon SVG",
-          "info": "Paste SVG code for custom icon"
-        },
-        {
-          "type": "textarea",
-          "id": "text",
-          "label": "Feature text",
-          "default": "70 mile\nbattery\nrange"
-        }
-      ]
-    },
-    {
-      "type": "seat_color",
-      "name": "Seat Color Image",
-      "settings": [
-        {
-          "type": "text",
-          "id": "variant_value",
-          "label": "Variant value",
-          "info": "Must match exactly with product variant option",
-          "default": "Red/Black"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Seat image",
-          "info": "Upload custom image for this seat color"
-        }
-      ]
-    }
-  ],
-  "settings": [
-    {
-      "type": "header",
-      "content": "Layout"
-    },
-    {
-      "type": "range",
-      "id": "max_width",
-      "min": 800,
-      "max": 2000,
-      "step": 50,
-      "unit": "px",
-      "label": "Maximum content width",
-      "default": 1400,
-      "info": "Controls the maximum width of the content area"
-    },
-    {
-      "type": "header",
-      "content": "Content"
-    },
-    {
-      "type": "textarea",
-      "id": "custom_heading",
-      "label": "Custom heading",
-      "info": "Use [product_title] to insert product name. Add line breaks for multi-line heading.",
-      "default": "Customize your\n[product_title]"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_features",
-      "label": "Show product features",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "body_color_label",
-      "label": "Body color label",
-      "default": "Select body color:"
-    },
-    {
-      "type": "text",
-      "id": "seat_color_label",
-      "label": "Seat color label",
-      "default": "Select seat color:"
-    },
-    {
-      "type": "header",
-      "content": "Pricing"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_full_price",
-      "label": "Show full product price",
-      "info": "When unchecked, shows reservation price",
-      "default": false
-    },
-    {
-      "type": "text",
-      "id": "reservation_price",
-      "label": "Reservation price",
-      "default": "$100"
-    },
-    {
-      "type": "text",
-      "id": "price_note",
-      "label": "Price note",
-      "default": "*Price subject to change"
-    },
-    {
-      "type": "text",
-      "id": "reservation_text",
-      "label": "Reservation text",
-      "default": "Reserve your's today:"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button text",
-      "default": "Reserve your"
-    },
-    {
-      "type": "header",
-      "content": "Colors"
-    },
-    {
-      "type": "color",
-      "id": "custom_background",
-      "label": "Background",
-      "default": "#f5f5f5"
-    },
-    {
-      "type": "color",
-      "id": "heading_color",
-      "label": "Heading",
-      "default": "#1a1a1a"
-    },
-    {
-      "type": "range",
-      "id": "heading_size",
-      "min": 24,
-      "max": 48,
-      "step": 2,
-      "unit": "px",
-      "label": "Heading size",
-      "default": 36
-    },
-    {
-      "type": "color",
-      "id": "icon_color",
-      "label": "Feature icons",
-      "default": "#4fc3f7"
-    },
-    {
-      "type": "color",
-      "id": "feature_text_color",
-      "label": "Feature text",
-      "default": "#666666"
-    },
-    {
-      "type": "color",
-      "id": "label_color",
-      "label": "Label text",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "selected_color",
-      "label": "Selected border color",
-      "default": "#4fc3f7"
-    },
-    {
-      "type": "range",
-      "id": "swatch_border_radius",
-      "min": 0,
-      "max": 20,
-      "step": 1,
-      "unit": "px",
-      "label": "Swatch border radius",
-      "default": 6
-    },
-    {
-      "type": "color",
-      "id": "price_color",
-      "label": "Price",
-      "default": "#1a1a1a"
-    },
-    {
-      "type": "color",
-      "id": "price_note_color",
-      "label": "Price note",
-      "default": "#666666"
-    },
-    {
-      "type": "color",
-      "id": "reservation_text_color",
-      "label": "Reservation text",
-      "default": "#333333"
-    },
-    {
-      "type": "color",
-      "id": "reservation_amount_color",
-      "label": "Reservation amount",
-      "default": "#4fc3f7"
-    },
-    {
-      "type": "color",
-      "id": "button_background",
-      "label": "Button background",
-      "default": "#4fc3f7"
-    },
-    {
-      "type": "color",
-      "id": "button_text_color",
-      "label": "Button text",
-      "default": "#ffffff"
-    },
-    {
-      "type": "color",
-      "id": "button_hover_background",
-      "label": "Button hover background",
-      "default": "#29b6f6"
-    }
-  ]
-}
-{% endschema %}
+                            
+                        </div>
+{% endfor %}</div></div></div><div class="swiper-slide is-product-thumbnail is-active hide"></div></div><div class="product-header_product-details"><h1 class="heading-style-h2" li-object:text="product.title">
+{{ product.title }}
+</h1><div class="product-header_price-wrapper"><div class="text-size-large text-weight-bold" li-js-price="price" x-text="LiquifyHelper.moneyFormat(price, true, '{{ shop.money_with_currency_format }}')">$55
+              </div></div><div class="product-header_shipping-wrapper"><div class="product-header_benefits-bullet"></div></div><div class="product-header_form-block">{% form 'product', product, class: 'product-header_default-state' %}
+{% if product.has_only_default_variant != true %}    <div class="product-header_option-list" li-if="product.has_only_default_variant != true">
+    <template x-for="(option, optionKey) in product.options" :key="optionKey">
+    <div class="product-header_option" li-element="product-options-loop" data-ProductVariantsLoop="true"><div li-element="product-options-name" x-text="option">Select body color:
+                    </div><div class="product-header_radio-list"><template x-for="(variantName, variantKey) in options_by_name[option].option.values" :key="variantName">
+    <div class="product-header_radio" li-element="product-option-loop"><input class="product-header_radio-button" type="radio" li-element="product-option-input" x-on:click="setVariant" :name="option" :data-name="option" :value="variantName" :id="variantName.toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w-]+/g, '').replace(/--+/g, '-')" :checked="selected_or_first_available_variant?.options.includes(variantName)" data-selectorType="radio" :class="firstOptionHasAvailableChildren[variantName] ? '' : 'data-disabled'">
+<label class="text-size-regular text-weight-semibold" li-element="product-option-name" x-text="variantName" :for="variantName">XS
+                        </label></div></template>
+</div></div></template>
+    </div>
+{% endif %}<div class="product-header_add-to-cart-wrapper"><template x-if="selected_or_first_available_variant.available">
+            <div class="product-header_buy-wrappper" li-js-if="selected_or_first_available_variant.available">
+        <a class="button max-width-full" li-element="add-to-cart" @click="addToCart($event, true)" :disabled="!addToCartButton">Reserve your INTI FE
+                    </a>        </div>
+    </template>
+<template x-if="!selected_or_first_available_variant.available">
+            <div class="product-header_out-of-stock" li-js-if="!selected_or_first_available_variant.available">
+        <a class="button is-secondary max-width-full pointer-events-off">Not in Stock
+                    </a>        </div>
+    </template>
+</div>{% endform %}
+<div class="hide"><div>Thank you! Your submission has been received!
+                </div></div><div class="hide"><div>Oops! Something went wrong while submitting the form.
+                </div></div></div></div></div></div></div></div> {% schema %} {"tag":"section","name":"Product-Hero","class":"section_product-header","presets":[{"name":"Product-Hero","category":"Liquify","blocks":[]}]} {% endschema %}
