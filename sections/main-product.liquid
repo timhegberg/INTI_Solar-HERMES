@@ -37,23 +37,345 @@
       --product-gallery-media-list-gap: var(--grid-gutter);
     }
   }
+
+  /* Custom styles to match the screenshot */
+  .product-customization-container {
+    background: #f8f9fa;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .product-customization-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  @media screen and (max-width: 999px) {
+    .product-customization-wrapper {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  .product-media-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .product-media-section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .product-info-custom {
+    text-align: left;
+  }
+
+  .customize-heading {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: 40px;
+    color: #1a1a1a;
+  }
+
+  .customization-options {
+    display: flex;
+    gap: 60px;
+    margin-bottom: 40px;
+    justify-content: center;
+  }
+
+  .custom-option {
+    text-align: center;
+  }
+
+  .custom-option-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 10px;
+    background: #e8f4f8;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-option-icon svg {
+    width: 30px;
+    height: 30px;
+    stroke: #0099cc;
+    fill: none;
+  }
+
+  .custom-option-text {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+  }
+
+  .color-selection {
+    margin-bottom: 30px;
+  }
+
+  .color-label {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+  }
+
+  .color-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .color-option {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .color-option:hover {
+    transform: scale(1.1);
+  }
+
+  .color-option.selected {
+    box-shadow: 0 0 0 3px #0099cc;
+  }
+
+  .seat-color-selection {
+    margin-bottom: 40px;
+  }
+
+  .seat-color-options {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .seat-color-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .seat-color-option:hover {
+    transform: scale(1.1);
+  }
+
+  .seat-color-option.selected {
+    box-shadow: 0 0 0 3px #0099cc;
+  }
+
+  .diagonal-split {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .diagonal-split::before,
+  .diagonal-split::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  .diagonal-split::before {
+    background: var(--color1);
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+  }
+
+  .diagonal-split::after {
+    background: var(--color2);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+  }
+
+  .price-reservation {
+    text-align: center;
+  }
+
+  .product-price {
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #1a1a1a;
+  }
+
+  .price-note {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .reservation-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .reservation-amount {
+    color: #0099cc;
+    font-weight: 500;
+  }
+
+  .reserve-button {
+    background: #0099cc;
+    color: white;
+    padding: 16px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .reserve-button:hover {
+    background: #0088bb;
+  }
 </style>
 
 {%- capture product_form_id -%}product-form-{{ product.id }}-{{ section.id }}{%- endcapture -%}
 
 <div {% render 'section-properties', tight: true %}>
-  <product-rerender id="product-info-{{ product.id }}-{{ section.id }}" observe-form="{{ product_form_id }}" allow-partial-rerender>
+  <product-rerender
+    id="product-info-{{ product.id }}-{{ section.id }}"
+    observe-form="{{ product_form_id }}"
+    allow-partial-rerender
+  >
     <div class="product">
-      {%- if product.media.size > 0 -%}
-        {%- render 'product-gallery', product: product, product_form_id: product_form_id -%}
-      {%- endif -%}
+      <!-- Custom layout matching the screenshot -->
+      <div class="product-customization-container">
+        <div class="product-customization-wrapper">
+          <!-- Product Media Section -->
+          <div class="product-media-section">
+            {%- if product.media.size > 0 -%}
+              {%- assign featured_media = product.selected_or_first_available_variant.featured_media
+                | default: product.featured_media
+              -%}
+              {%- if featured_media != blank -%}
+                {{
+                  featured_media
+                  | image_url: width: 600
+                  | image_tag: loading: 'lazy', widths: '300,400,500,600,800', class: 'product-main-image'
+                }}
+              {%- endif -%}
+            {%- endif -%}
+          </div>
 
-      {%- render 'product-info', 
-        product: product, 
-        update_url: true,
-        product_form_id: product_form_id,
-        context: 'main_product'
-      -%}
+          <!-- Product Info Section -->
+          <div class="product-info-custom">
+            <h2 class="customize-heading">Customize your {{ product.title }}</h2>
+
+            <!-- Customization Options -->
+            <div class="customization-options">
+              <div class="custom-option">
+                <div class="custom-option-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <path d="M3 9h18" />
+                    <path d="M9 21V9" />
+                  </svg>
+                </div>
+                <div class="custom-option-text">
+                  70 mile<br>
+                  battery range
+                </div>
+              </div>
+
+              <div class="custom-option">
+                <div class="custom-option-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                </div>
+                <div class="custom-option-text">
+                  Travel up to<br>
+                  25 mph
+                </div>
+              </div>
+
+              <div class="custom-option">
+                <div class="custom-option-icon">
+                  <svg viewBox="0 0 24 24" stroke-width="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <circle cx="12" cy="12" r="3" />
+                    <path d="M12 2v3" />
+                    <path d="M12 19v3" />
+                    <path d="M2 12h3" />
+                    <path d="M19 12h3" />
+                  </svg>
+                </div>
+                <div class="custom-option-text">
+                  35 Free Solar<br>
+                  Miles Daily
+                </div>
+              </div>
+            </div>
+
+            <!-- Body Color Selection -->
+            <div class="color-selection">
+              <div class="color-label">Select body color:</div>
+              <div class="color-options">
+                <div class="color-option selected" style="background: #e8f0f5;"></div>
+                <div class="color-option" style="background: #2c2c2c;"></div>
+                <div class="color-option" style="background: #d4d4d4;"></div>
+                <div class="color-option" style="background: #ff3333;"></div>
+                <div class="color-option" style="background: #0066ff;"></div>
+              </div>
+            </div>
+
+            <!-- Seat Color Selection -->
+            <div class="seat-color-selection">
+              <div class="color-label">Select seat color:</div>
+              <div class="seat-color-options">
+                <div class="seat-color-option selected">
+                  <div class="diagonal-split" style="--color1: #ff3333; --color2: #2c2c2c;"></div>
+                </div>
+                <div class="seat-color-option">
+                  <div class="diagonal-split" style="--color1: #f0f0f0; --color2: #2c2c2c;"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price and Reservation -->
+            <div class="price-reservation">
+              <div class="product-price">${{ product.price | money_without_currency }}</div>
+              <div class="price-note">*Price subject to change</div>
+              <div class="reservation-text">Reserve your's today: <span class="reservation-amount">$100</span></div>
+              <button type="submit" form="{{ product_form_id }}" class="reserve-button">
+                Reserve your {{ product.title }}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hidden form for functionality -->
+      <div style="display: none;">
+        {%- render 'product-info',
+          product: product,
+          update_url: true,
+          product_form_id: product_form_id,
+          context: 'main_product'
+        -%}
+      </div>
     </div>
   </product-rerender>
 </div>
@@ -67,15 +389,30 @@
         {%- assign button_label = 'product.general.add_to_cart_button' | t -%}
 
         <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" class="sm:hidden">
-          {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true, stretch: true, size: 'lg' -%}
+          {%- render 'button',
+            type: 'submit',
+            content: button_label,
+            form: product_form_id,
+            background: buy_buttons_block.settings.atc_button_background,
+            text_color: buy_buttons_block.settings.atc_button_text_color,
+            secondary: true,
+            stretch: true,
+            size: 'lg'
+          -%}
         </buy-buttons>
 
-        {%- assign image = product.selected_or_first_available_variant.featured_media | default: product.featured_media -%}
+        {%- assign image = product.selected_or_first_available_variant.featured_media
+          | default: product.featured_media
+        -%}
 
         <div class="product-quick-add__variant {% if image == blank %}no-image{% endif %} hidden sm:grid">
           {%- if image != blank -%}
             <variant-media widths="80,160" form="{{ product_form_id }}">
-              {{- image | image_url: width: image.width | image_tag: loading: 'lazy', sizes: '80px', widths: '80,160', class: 'rounded-xs' -}}
+              {{-
+                image
+                | image_url: width: image.width
+                | image_tag: loading: 'lazy', sizes: '80px', widths: '80,160', class: 'rounded-xs'
+              -}}
             </variant-media>
           {%- endif -%}
 
@@ -87,11 +424,22 @@
             {%- endif -%}
 
             <a href="{{ product.url }}" class="bold truncate-text">{{ product.title }}</a>
-            {%- render 'price-list', product: product, variant: product.selected_or_first_available_variant, form_id: product_form_id -%}
+            {%- render 'price-list',
+              product: product,
+              variant: product.selected_or_first_available_variant,
+              form_id: product_form_id
+            -%}
           </div>
 
           <buy-buttons template="{{ product.template_suffix }}" form="{{ product_form_id }}" force-secondary-button>
-            {%- render 'button', type: 'submit', content: button_label, form: product_form_id, background: buy_buttons_block.settings.atc_button_background, text_color: buy_buttons_block.settings.atc_button_text_color, secondary: true -%}
+            {%- render 'button',
+              type: 'submit',
+              content: button_label,
+              form: product_form_id,
+              background: buy_buttons_block.settings.atc_button_background,
+              text_color: buy_buttons_block.settings.atc_button_text_color,
+              secondary: true
+            -%}
           </buy-buttons>
         </div>
       </product-quick-add>
@@ -100,10 +448,10 @@
 {%- endif -%}
 
 {%- comment -%}
-IMPLEMENTATION NOTE: Shopify does not currently allows to render a given section within the context of a given product. However,
-when rendering the quick buy popovers, we want to be able to re-use the merchant's choices (such as the selector type). This
-is however only possible by rendering the whole product page, and extracting the relevant part. Here, we therefore render the
-quick buy information in a template, that will be extracted in JS, but ensure it is not visible in the main product page
+  IMPLEMENTATION NOTE: Shopify does not currently allows to render a given section within the context of a given product. However,
+  when rendering the quick buy popovers, we want to be able to re-use the merchant's choices (such as the selector type). This
+  is however only possible by rendering the whole product page, and extracting the relevant part. Here, we therefore render the
+  quick buy information in a template, that will be extracted in JS, but ensure it is not visible in the main product page
 {%- endcomment -%}
 
 {%- render 'product-quick-buy', product: product -%}
