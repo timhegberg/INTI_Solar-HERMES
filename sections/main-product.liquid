@@ -455,7 +455,7 @@
      overflow: hidden;
      height: 5rem
   }
-</style><div class="padding-global padding-section-small"><div class="container-large"><div class="product-header_component"><script src="{{ 'liquify_custom.js' | asset_url }}" type="text/javascript"></script>
+</style><div class="padding-global padding-section-large"><div class="container-large"><div class="product-header_component"><script src="{{ 'liquify_custom.js' | asset_url }}" type="text/javascript"></script>
 <div class="product-header_layout" li-element="product-variant-container" x-data="handleVariant({{ product | json | escape }}, {{ product.options_by_name | json | escape }}, {{ product.selected_or_first_available_variant | json | escape }})" x-init="$nextTick(() => { activateVariants() })" @setbundleitem.window="updateBundleItem($event.detail.product, $event.detail.quantity)"><div class="swiper-container is-product-gallery"><div class="swiper is-product-gallery"><div class="swiper-wrapper is-product-gallery" id="my-gallery">{% for image in product.images %}    <div class="swiper-slide is-product-gallery" li-for="image in product.images">
                                     
                             <div class="product-header_gallery-lightbox"><img class="product-header_gallery-image" width="auto" height="auto" alt="{{ image.alt }}" src="{{ image.src | product_img_url: 'master' }}" loading="lazy" li-object:src="image.src | product_img_url: 'master'" li-object:alt="image.alt" data-dyn-bind="[object Object]">
